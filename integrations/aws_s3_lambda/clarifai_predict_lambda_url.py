@@ -21,8 +21,9 @@ def cl_predict(model_id, api_key, image_bytes=None, image_url=None):
     http = urllib3.PoolManager()
     r = http.request('POST',  url, headers=headers, body=encoded_data)
 
-    print("predict http status: " + r.status)
-    #print(r.headers)                                                                                                                        response = json.loads(r.data.decode('utf-8'))
+    print("predict http status: " + str(r.status))
+    #print(r.headers)
+    response = json.loads(r.data.decode('utf-8'))
 
     #unpack the list
     clconcepts = response['outputs'][0]['data']['concepts']
